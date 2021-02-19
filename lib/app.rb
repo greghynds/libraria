@@ -1,8 +1,5 @@
-class MobTimer
-  attr_reader :rotation_time
-  def initialize
-    @rotation_time = 11
-  end
-end
+require 'sinatra'
 
-puts "Rotation time: #{MobTimer.new.rotation_time}"
+get '/' do
+  'Hello world!'
+end
