@@ -6,16 +6,16 @@ class JsonSource
     end
 
     def entries
-        entries = @json.map do |entry|
-            parse_entry(entry)
+        entries = @json.map do |hash|
+            parse_entry(hash)
         end
     end
 
-    def parse_entry(entry)
+    def parse_entry(hash)
         Entry.new(
-            entry['title'],
-            entry['link'], 
-            entry['date_created']
+            hash['title'],
+            hash['link'], 
+            hash['date_created']
         )
     end
 end
