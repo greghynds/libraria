@@ -1,1 +1,17 @@
-[{"title":"Link 1","link":"https://www.links.com/1","date_created":1549054305},{"title":"Link 2","link":"https://www.links.com/2","date_created":1549054310},{"title":"A new link","link":"https://www.links.com/1","date_created":1549054305}]
+[
+  {
+    "title": "Link 1",
+    "link": "https://www.links.com/1",
+    "date_created": 1549054305
+  },
+  {
+    "title": "Link 2",
+    "link": "https://www.links.com/2",
+    "date_created": 1549054310
+  },
+  {
+    "title": "A new link",
+    "link": "https://www.links.com/1",
+    "date_created": 1549054305
+  }
+]
