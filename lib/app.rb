@@ -1,7 +1,6 @@
 require 'sinatra'
 require "sinatra/reloader" if development?
-require_relative 'entries_reader'
-require_relative 'entries_writer'
+require_relative 'entries_repository'
 
 puts "Sinatra: #{Process.pid}"
 
@@ -10,8 +9,7 @@ ENTRIES_FILE = 'local_storage/entries.json'
 class Libraria < Sinatra::Base
 
   before do
-    @reader = EntriesReader.new(ENTRIES_FILE)
-    @writer = EntriesWriter.new(ENTRIES_FILE)
+    @repo = EntriesRepository.new(ENTRIES_FILE)
   end
 
   get "/" do
@@ -20,11 +18,11 @@ class Libraria < Sinatra::Base
 
   get "/entries/all" do
     content_type :json
-    @reader.entries
+    @repo.all_entries
   end
 
   post '/entries' do
-    @writer.write(request.body.read)
+    @repo.add_entry(request.body.read)
   end
 end
 
