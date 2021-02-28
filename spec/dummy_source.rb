@@ -7,8 +7,4 @@ class DummySource
             Entry.new('Link 2', 'https://www.links.com/2', 1549054310),
         ]
     end
-
-    def read
-        @entries
-    end
 end
