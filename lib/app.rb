@@ -2,13 +2,17 @@ require 'sinatra'
 require "sinatra/reloader" if development?
 require_relative 'entries_repo'
 require_relative 'entry'
+require_relative 'json_source'
 
 puts "Sinatra: #{Process.pid}"
+
+ENTRIES_FILE = 'local_storage/entries.json'
 
 class Libraria < Sinatra::Base
 
   before do
-    @repo = EntriesRepo.new
+    source = JsonSource.new(File.read(ENTRIES_FILE))
+    @repo = EntriesRepo.new(source)
   end
 
   get "/" do

@@ -4,6 +4,6 @@ class EntriesRepo
     end
 
     def all
-        @source.read
+        @source.entries
     end
 end
