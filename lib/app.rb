@@ -19,9 +19,20 @@ class Libraria < Sinatra::Base
     'This is just the root!'
   end
 
-  get "/all" do
+  get "/entries/all" do
     content_type :json
     @repo.all.map { |o| Hash[o.each_pair.to_a] }.to_json
+  end
+
+  post '/entries' do
+    json = JSON.parse(request.body.read)
+    stored = File.read(ENTRIES_FILE)
+
+    File.open(ENTRIES_FILE,"w") do |f|
+      f.puts JSON.generate(JSON.parse(stored) << json)
+    end 
+
+    puts "Saving #{json}"
   end
 end
 

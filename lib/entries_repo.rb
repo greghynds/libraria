@@ -6,4 +6,8 @@ class EntriesRepo
     def all
         @source.entries
     end
+
+    def add(entry)
+        
+    end
 end
