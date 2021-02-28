@@ -1,16 +1,14 @@
 require 'entries_repo'
 require 'entry'
+require 'dummy_source'
 
 RSpec.describe EntriesRepo do
     it "returns all entries" do
-        sut = EntriesRepo.new
-        entries = [
-            Entry.new('Link 1', 'https://www.links.com/1', 1549054305),
-            Entry.new('Link 2', 'https://www.links.com/2', 1549054310),
-        ]
-
+        source = DummySource.new
+        sut = EntriesRepo.new(source)
+        
         result = sut.all
 
-        expect(result).to match_array(entries)
+        expect(result).to match_array(source.entries)
     end
 end
